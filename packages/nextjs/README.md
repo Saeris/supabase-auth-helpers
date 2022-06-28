@@ -272,6 +272,8 @@ If you visit `/api/protected-route` without a valid session cookie, you will get
 
 ## Protecting routes with [Nextjs Middleware](https://nextjs.org/docs/middleware)
 
+> 🚨 Please note, `withMiddlewareAuth` is now broken in Nextjs 12.2 due to [breaking changes](https://nextjs.org/docs/messages/middleware-upgrade-guide#breaking-changes) in the middleware implementation. Use at your own risk!
+
 As an alternative to protecting individual pages using `getServerSideProps` with `withPageAuth`, `withMiddlewareAuth` can be used from inside a `_middleware` file to protect an entire directory. In the following example, all requests to `/protected/*` will check whether a user is signed in, if successful the request will be forwarded to the destination route, otherwise the user will be redirected to `/login` (defaults to: `/`) with a 307 Temporary Redirect response status:
 
 ```ts
